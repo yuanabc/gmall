@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        namespace: f5f661b7-acd7-479c-aac5-e12bdf7f4ab8
+        file-extension: yaml
+        group: dev
+  profiles:
+    active: dev

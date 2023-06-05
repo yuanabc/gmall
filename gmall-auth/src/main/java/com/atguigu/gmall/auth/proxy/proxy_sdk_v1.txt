@@ -1,0 +1,21 @@
+
+一、proxy-http:
+1.java原生代理
+代码文件参考 ClientProxyBasicHttp.java
+
+
+2.HttpClient:
+1）环境准备
+在apache官网下载相应的jar包
+HttpClient: https://hc.apache.org/downloads.cgi
+HttpClient需要用到另外两个库:
+HttpCore: https://hc.apache.org/downloads.cgi
+Commons Logging: https://commons.apache.org/proper/commons-logging/download_logging.cgi
+2)代码参考 ClientProxyHttpClientHttp.java
+
+
+
+二、proxy-socks5:
+1.java原生代理
+代码文件参考ClientProxyBasicSocks.java
+
