@@ -1,0 +1,55 @@
+server:
+  port: 10000
+
+spring:
+  application:
+    name: pms-auth
+  datasource:
+    url: jdbc:mysql://localhost:3306/gmall-auth?useOldAliasMetadataBehavior=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        enabled: false
+
+# mybatis-plus 配置内容
+mybatis-plus:
+  configuration:
+    #是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto # ID 主键自增
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.atguigu.gmall.auth.entity
+
+
+# JWT配置
+jwt:
+  # 密匙KEY
+  secret: aaabbbcccdddeeefffggghhhiiissssssjjjkkklllmmmnnnooopppqqqrrrsssttt@#
+  # HeaderKEY
+  tokenHeader: Authorization
+  # Token前缀字符
+  # 过期时间 单位秒 1天后过期=86400 7天后过期=604800
+  expiration: 172800
+  # 配置不需要认证的接口
+  antMatchers: /index,/login/**,/favicon.ico,/validata/code,/guest/**
+
+
+
+security:
+  browser:
+    url: /
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
